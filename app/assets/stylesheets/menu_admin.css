@@ -17,6 +17,14 @@ h1, h2, h3, h4, h5, h6, p, li {
   color: white;
 }
 
+a:link.normal-link {
+  color: #4db6ac;
+}
+
+a:visited.normal-link {
+  color: #4db6ac;
+}
+
 h1 {
   font-size: 70px;
   text-align: center;
@@ -98,4 +106,16 @@ h3 {
 
 #error_explanation {
   color: red;
+}
+
+.textarea.materialize-textarea {
+  background-color: white;
+}
+
+.category-box {
+  color: white;
+}
+
+.add-btn {
+  margin-top: 20px;
 }

@@ -2,35 +2,56 @@
   <p>Hello, <%= current_user.name %></p>
 <% end %>
 
-<h1 >CURRENT CATEGORIES</h1>
-<% @categories.each do |category| %>
-  <ul>
-    <li><%= category.name %></li>
-    <li>
-      <%= form_tag "/categories/#{category.id}", method: :delete do %>
-      <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
-<div>
-  <%= form_tag "/categories", method: :post do %>
-    <div >
-      Add a New Category: <input type="text" name="category_name">
+<div class="row">
+
+  <!-- CATEGORIES SECTION -->
+  <!-- <div class="col s12"> -->
+    <div class="col s12">
+      <h1 >CURRENT CATEGORIES</h1>
     </div>
-    <div>
-      <button class="btn" type="submit">Add Category</button>
+    <!-- </div> -->
+    <div class=" col 12">
+      <div class="col s6">
+        <% @categories.each do |category| %>
+          <div class="col s8">
+            <h5><%= category.name %></h5>
+          </div>
+          <div class="col s4">
+            <%= form_tag "/categories/#{category.id}", method: :delete do %>
+              <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col s6 category-box">
+        <%= form_tag "/categories", method: :post do %>
+          <div class="col s8">
+            Add a New Category: <input type="text" name="category_name">
+          </div>
+          <div class="col s4 add-btn">
+            <button class="btn" type="submit">Add</button>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+    <!-- </div> -->
+  <!-- </div> -->
+
+  <div class="divider"></div>
+
+  <!-- ITEMS SECTION -->
+  <div class="col s12">
+    <h1>CURRENT ITEMS</h1>
+    <a href="/items/new" class="waves-effect waves-light btn">Add New Item</a>
+    <% @items.each do |item| %>
+      <h3><%= item.name %></h3>
+      <p><%= item.description %></p>
+      <p><%= number_to_currency(item.price) %></p>
+      <a href="/items/<%= item.id %>/edit" class="normal-link">Edit</a>
+      <%= form_tag "/items/#{item.id}", method: :delete do %>
+        <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>
-<h1>CURRENT ITEMS</h1>
-<a href="/items/new">Add New Item</a>
-<% @items.each do |item| %>
-  <h3><%= item.name %></h3>
-  <p><%= item.description %></p>
-  <p><%= number_to_currency(item.price) %>
-  <a href="/items/<%= item.id %>/edit">Edit</a>
-  <%= form_tag "/items/#{item.id}", method: :delete do %>
-    <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
-  <% end %>
-<% end %>
