@@ -1,0 +1,71 @@
+<!-- Sets default menu based on time of day or menu selected -->
+<div class="row">
+
+  <div class="col s9">
+    <% if params[:lunch] == "true" %>
+      <h1 class="menu menuHeading">LUNCH MENU</h1>
+    <% elsif params[:dinner] == "true" %>
+      <h1 class="menu menuHeading">DINNER MENU</h1>
+    <% else %>
+      <% if @time.hour >= 16 %>
+        <h1 class="menu menuHeading">DINNER MENU</h1>
+      <% else %>
+        <h1 class="menu menuHeading">LUNCH MENU</h1>
+      <% end %>
+    <% end %>
+    <div class="items menu">
+      <% @categories.each do |category| %>
+        <div class="course"> 
+          <% if category.items.length > 0 %>  <!-- wont show category if there are no items with that category on the menu -->
+            <h2 class="category"><%= category.name.pluralize %></h2>
+            <% @items.each do |item| %>
+              <% if item.category.id == category.id %>
+                <div class="item">
+                  <h3 class="itemName"><%= item.name %></h3>
+                  <p><%= item.description %></p>
+                  <p><%= number_to_currency(item.price) %></p>
+                  <% if current_user %>
+                    <%= form_tag "/carted_items", method: :post do %>
+                      <div class="quantity-box">
+                        Quantity: <input type="text" name="quantity">
+                      </div>
+                      <input type="hidden" name="item_id" value="<%= item.id %>">
+                      <input class="btn" type="submit" value="Add to Order">
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+          <div class="divider"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col s3 order-panel">
+    <% if current_user && @carted_items.length > 0 %>
+      <div>
+        <h3>Your Order</h3>
+        <% @carted_items.each do |carted_item| %>
+          <h4><%= carted_item.item.name %></h4>
+          <h4>Quantity: <%= carted_item.quantity %></h4>
+          <h4>Price: <%= number_to_currency(carted_item.item.price * carted_item.quantity) %></h4>
+          <%= form_tag "/carted_items/#{carted_item.id}", method: :delete do %>
+            <input class="btn" type="submit" value="delete">
+          <% end %>
+        <% end %>
+      </div>
+      <h4>subtotal: <%= number_to_currency(@subtotal) %></h4>
+      <h4>tax: <%= number_to_currency(@tax) %></h4>
+      <h4>total: <%= number_to_currency(@total) %></h4>
+      <div>
+        <%= form_tag "/orders", method: :post do %>
+          <input class="btn" type="submit" value="Submit Order">
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+
+</div>

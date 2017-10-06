@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestMenuApp</title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper grey darken-3">
+          <a href="/" class="brand-logo center">Restaurant Name</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if current_user && current_user.admin %>
+              <li><a href="/admin">Menu Editor</a></li>
+            <% end %> 
+            <% if current_user %>
+              <li><a href="/logout">Log Out</a></li>
+            <% else %>
+              <li><a href="/login">Log In</a></li>
+            <% end %> 
+          </ul>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+              <li><a href="/menu?lunch=true">Lunch Menu</a></li>
+              <li><a href="/menu?dinner=true">Dinner Menu</a></li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+
+    
+    <div class="container">  <!-- puts all pages in a container -->
+      <% flash.each do |name, message| %>   <!-- allows flash messages -->
+        <p class="flash"><%= message %></p>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

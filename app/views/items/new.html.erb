@@ -1,0 +1,12 @@
+<h1>Add New Menu Item</h1>
+<%= form_tag "/items", method: :post do %>
+  <%= render "form", url: "/items" %>
+  <%= submit_tag "Add Item"%>
+<% end %>
+<a href="/admin">Cancel</a>
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>

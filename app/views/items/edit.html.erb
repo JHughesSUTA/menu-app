@@ -1,0 +1,12 @@
+<h1>Edit Item</h1>
+<%= form_tag "/items/#{@item.id}", method: :patch do %>
+  <%= render "form", url: "/items/#{@item.id}" %>
+  <%= submit_tag "Update Item" %>
+<% end %>
+<a href="/admin">Cancel</a>
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>

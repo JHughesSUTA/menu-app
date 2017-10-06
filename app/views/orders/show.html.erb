@@ -1,0 +1,11 @@
+<h1>Order Confirmation</h1>
+<h3>Order Number: <%= @order.id %></h3>
+
+<% @order.carted_items.each do |carted_item| %> 
+  <h4>Item: <%= carted_item.item.name %></h4>
+  <p>Quantity: <%= carted_item.quantity %></p>
+<% end %>
+
+<p>Subtotal: <%= number_to_currency(@order.subtotal) %></p>
+<p>Tax: <%= number_to_currency(@order.tax) %></p>
+<p>Total <%= number_to_currency(@order.total) %></p>

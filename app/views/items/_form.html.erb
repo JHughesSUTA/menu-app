@@ -1,0 +1,53 @@
+<% if @item.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h3>
+ 
+    <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div>
+  Which Menu(s)?
+</div>
+<div>
+  <p>
+    <input type="hidden"  name="lunch" value="false" />  <!-- sets lunch value to false if checkbox is unchecked -->
+    <input type="checkbox" name="lunch" class="filled-in" id="lunch-option" checked="checked" value="true" />
+    <label for="lunch-option">Lunch</label>
+  </p>
+  <p>
+    <input type="hidden"  name="dinner" value="false" /> <!-- sets dinner value to false if checkboxk is unchecked -->
+    <input type="checkbox" name="dinner" class="filled-in" id="dinner-option" checked="checked" value="true" />
+    <label for="dinner-option">Dinner</label>
+  </p>
+</div>
+
+<div>
+  Name: <input type="text" value="<%= @item.name %>" name="name">
+</div>
+
+<div class="input-field">
+  <select name="category_id" id="">
+    <option value="" disabled selected>Category</option>
+    <% @categories.each do |category| %>
+      <option value="<%= category.id.to_i %>"><%= category.name %></option>
+    <% end %>
+  </select>
+  <label>Choose Item Category</label>
+</div>
+
+<div>
+  Description:
+</div>
+
+<div>
+  <textarea name="description" rows="10" cols="30"></textarea>
+</div>
+
+<div>
+  Price: <input type="text" value="<%= @item.price %>" name="price">
+</div>

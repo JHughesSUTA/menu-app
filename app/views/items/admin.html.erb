@@ -1,0 +1,36 @@
+<% if current_user %>
+  <p>Hello, <%= current_user.name %></p>
+<% end %>
+
+<h1 >CURRENT CATEGORIES</h1>
+<% @categories.each do |category| %>
+  <ul>
+    <li><%= category.name %></li>
+    <li>
+      <%= form_tag "/categories/#{category.id}", method: :delete do %>
+      <input type="submit" value="delete">
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+<div>
+  <%= form_tag "/categories", method: :post do %>
+    <div >
+      Add a New Category: <input type="text" name="category_name">
+    </div>
+    <div>
+      <%= submit_tag "Add Category" %>
+    </div>
+  <% end %>
+</div>
+<h1>CURRENT ITEMS</h1>
+<a href="/items/new">Add New Item</a>
+<% @items.each do |item| %>
+  <h3><%= item.name %></h3>
+  <p><%= item.description %></p>
+  <p><%= number_to_currency(item.price) %>
+  <a href="/items/<%= item.id %>/edit">Edit</a>
+  <%= form_tag "/items/#{item.id}", method: :delete do %>
+    <input type="submit" value="delete">
+  <% end %>
+<% end %>
