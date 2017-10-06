@@ -11,10 +11,9 @@ body {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
-
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, li {
   color: white;
 }
 
@@ -88,8 +87,13 @@ h3 {
   background-color: black;
   opacity: 0.7;
   border-radius: 25px;
-  margin-top: 20px;
+  margin-top: 80px;
   text-align: center;
+  overflow-y: scroll;
+}
+
+.trash-icon {
+  font-size: 6rem;
 }
 
 #error_explanation {

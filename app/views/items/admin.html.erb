@@ -8,7 +8,7 @@
     <li><%= category.name %></li>
     <li>
       <%= form_tag "/categories/#{category.id}", method: :delete do %>
-      <input type="submit" value="delete">
+      <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
     </li>
   <% end %>
   </ul>
@@ -19,7 +19,7 @@
       Add a New Category: <input type="text" name="category_name">
     </div>
     <div>
-      <%= submit_tag "Add Category" %>
+      <button class="btn" type="submit">Add Category</button>
     </div>
   <% end %>
 </div>
@@ -31,6 +31,6 @@
   <p><%= number_to_currency(item.price) %>
   <a href="/items/<%= item.id %>/edit">Edit</a>
   <%= form_tag "/items/#{item.id}", method: :delete do %>
-    <input type="submit" value="delete">
+    <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
   <% end %>
 <% end %>
