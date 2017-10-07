@@ -1,7 +1,7 @@
 <!-- Sets default menu based on time of day or menu selected -->
 <div class="row">
-
-  <div class="col s9">
+  <div class="col s9"> 
+  <!-- HEADING -->
     <% if params[:lunch] == "true" %>
       <h1 class="menu menuHeading">LUNCH MENU</h1>
     <% elsif params[:dinner] == "true" %>
@@ -13,6 +13,7 @@
         <h1 class="menu menuHeading">LUNCH MENU</h1>
       <% end %>
     <% end %>
+    <!-- MENU LISTINGS -->
     <div class="items menu">
       <% @categories.each do |category| %>
         <div class="course"> 
@@ -41,8 +42,9 @@
         </div>
       <% end %>
     </div>
-  </div>
 
+  </div>
+  <!-- YOUR ORDER -->
   <div class="col s3 offset-s7 order-panel">
     <% if current_user && @carted_items.length > 0 %>
       <div>
@@ -50,7 +52,6 @@
         <% @carted_items.each do |carted_item| %>
           <h5><%= carted_item.item.name %></h5>
           <p>Quantity: <%= carted_item.quantity %> Price: <%= number_to_currency(carted_item.item.price * carted_item.quantity) %></p>
-          <!-- <p>Price: <%= number_to_currency(carted_item.item.price * carted_item.quantity) %></p> -->
           <%= form_tag "/carted_items/#{carted_item.id}", method: :delete do %>
             <button class="btn-floating" type="submit"><i class="material-icons trash-icon">delete</i></button>
           <% end %>
@@ -70,8 +71,6 @@
   </div>
 
 </div>
-
-
 
 <script>
    $(document).ready(function(){
