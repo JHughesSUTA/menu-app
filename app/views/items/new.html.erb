@@ -1,10 +1,15 @@
-<h1>Add New Menu Item</h1>
-<%= form_tag "/items", method: :post do %>
-  <%= render "form", url: "/items" %>
-  <%= submit_tag "Add Item"%>
-<% end %>
-<a href="/admin" class="normal-link">Cancel</a>
-
+<div class="row">
+  <div class="col 8 offset-s2">
+    <h1>Add New Menu Item</h1>
+  </div>
+  <%= form_tag "/items", method: :post do %>
+    <%= render "form", url: "/items" %>
+    <div class="col s12">
+      <%= submit_tag "Add Item"%>
+    </div>
+  <% end %>
+  <a href="/admin" class="normal-link col s12">Cancel</a>
+</div>
 <script>
   $(document).ready(function() {
     $('select').material_select();

@@ -85,6 +85,7 @@ h3 {
 .quantity-box {
   margin: auto;
   width: 20%;
+  color: white;
 }
 
 .brand-logo {
@@ -134,6 +135,7 @@ h3 {
   margin-top: 20px;
 }
 
+
 #card-description {
   text-align: center;
 }
@@ -152,4 +154,8 @@ h3 {
 
 #menu-category {
   text-align: center;
+}
+
+.form-elements {
+  color: white;
 }
