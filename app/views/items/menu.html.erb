@@ -27,11 +27,21 @@
                   <p><%= number_to_currency(item.price) %></p>
                   <% if current_user %>
                     <%= form_tag "/carted_items", method: :post do %>
-                      <div class="quantity-box">
-                        Quantity: 
-                        <input type="text" name="quantity">
-                      </div>
                       <input type="hidden" name="item_id" value="<%= item.id %>">
+                      <div class="col s12 quantity-box">
+                        <select name="quantity" class="quantity-select">
+                          <option value="1" selected>1</option>
+                            <% for x in 2..10 %>
+                              <option value="<%= x %>"><%= x %></option>
+                            <% end %>
+                          </select>
+                        <label>Choose Quantity</label>
+                      </div>
+
+                      <!-- <div class="quantity-box"> -->
+                        <!-- Quantity:  -->
+                        <!-- <input type="text" name="quantity"> -->
+                      <!-- </div> -->
                       <input class="btn" type="submit" value="Add to Order">
                     <% end %>
                   <% end %>
@@ -73,6 +83,13 @@
 
 </div>
 
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+
 <!-- <script>
    $(document).ready(function(){
     $('.order-panel').pushpin({
@@ -81,4 +98,4 @@
       offset: 0
     });
   });
-</script> -->
+</script>

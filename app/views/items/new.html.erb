@@ -5,7 +5,8 @@
   <%= form_tag "/items", method: :post do %>
     <%= render "form", url: "/items" %>
     <div class="col s12">
-      <%= submit_tag "Add Item"%>
+      <input class="btn" type="submit" value="Add Item">
+      <!-- <%= submit_tag "Add Item"%> -->
     </div>
   <% end %>
   <a href="/admin" class="normal-link col s12">Cancel</a>

@@ -84,8 +84,17 @@ h3 {
 
 .quantity-box {
   margin: auto;
-  width: 20%;
   color: white;
+}
+
+.quantity-select {
+  width: 20%;
+  margin: auto;
+  text-align: center;
+}
+
+.select-wrapper input.select-dropdown {
+  text-align: center;
 }
 
 .brand-logo {
