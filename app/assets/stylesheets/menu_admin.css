@@ -156,6 +156,21 @@ h3 {
   text-align: center;
 }
 
-.form-elements {
+.form-component {
   color: white;
+}
+
+.form-elements {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.tester {
+  background-color: white;
+}
+
+.description-area {
+  height: 75px;
+  background-color: #4db6ac;
+  opacity: 0.8;
 }

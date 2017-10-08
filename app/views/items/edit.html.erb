@@ -1,9 +1,15 @@
-<h1>Edit Item</h1>
-<%= form_tag "/items/#{@item.id}", method: :patch do %>
-  <%= render "form", url: "/items/#{@item.id}" %>
-  <%= submit_tag "Update Item" %>
-<% end %>
-<a href="/admin" class="normal-link">Cancel</a>
+<div class="row">
+  <div class="col s12">
+    <h1>Edit Item</h1>
+  </div>
+  <%= form_tag "/items/#{@item.id}", method: :patch do %>
+    <%= render "form", url: "/items/#{@item.id}" %>
+    <div class="col s12">
+      <%= submit_tag "Update Item" %>
+    </div>
+  <% end %>
+  <a href="/admin" class="normal-link col s12">Cancel</a>
+</div>
 
 <script>
   $(document).ready(function() {

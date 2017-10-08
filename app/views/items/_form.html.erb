@@ -11,14 +11,14 @@
   </div>
 <% end %>
 
-<div class="col s6 form-elements">
+<div class="col s6 form-component">
   <!-- NAME FIELD -->
-  <div>
+  <div class="form-elements col s11">
     Name: <input type="text" value="<%= @item.name %>" name="name">
   </div>
 
   <!-- CATEGORY DROPDOWN -->
-  <div class="input-field">
+  <div class="input-field form-elements col s11">
     <select name="category_id">
       <option value="" disabled selected>Category</option>
       <% @categories.each do |category| %>
@@ -29,37 +29,39 @@
   </div>
 </div>
 
-<div class="col s6 form-elements">
+<div class="col s6 form-component">
   <!-- MENU'S CHECKBOX -->
-  <div>
-    Which Menu(s)?
-  </div>
-  <div>
-    <p class="col s3">
-      <input type="hidden"  name="lunch" value="false" />  <!-- sets lunch value to false if checkbox is unchecked -->
-      <input type="checkbox" name="lunch" class="filled-in" id="lunch-option" checked="checked" value="true" />
-      <label for="lunch-option">Lunch</label>
-    </p>
-    <p class="col s3">
-      <input type="hidden"  name="dinner" value="false" /> <!-- sets dinner value to false if checkboxk is unchecked -->
-      <input type="checkbox" name="dinner" class="filled-in" id="dinner-option" checked="checked" value="true" />
-      <label for="dinner-option">Dinner</label>
-    </p>
+  <div class="form-elements">
+    <div>
+      Which Menu(s)?
+    </div>
+    <div>
+      <p class="col s3">
+        <input type="hidden"  name="lunch" value="false" />  <!-- sets lunch value to false if checkbox is unchecked -->
+        <input type="checkbox" name="lunch" class="filled-in" id="lunch-option" checked="checked" value="true" />
+        <label for="lunch-option">Lunch</label>
+      </p>
+      <p class="col s3">
+        <input type="hidden"  name="dinner" value="false" /> <!-- sets dinner value to false if checkboxk is unchecked -->
+        <input type="checkbox" name="dinner" class="filled-in" id="dinner-option" checked="checked" value="true" />
+        <label for="dinner-option">Dinner</label>
+      </p>
+    </div>
   </div>
 
   <!-- PRICE TEXT ENTRY -->
-  <div class="col s12">
+  <div class="col s11 form-elements">
     Price: <input type="text" value="<%= @item.price %>" name="price">
   </div>
 
 </div>
 
-<div class="col s8 offset-s2 form-elements">
+<div class="col s8 offset-s2 form-component">
   <!-- DESCRIPTION TEXT AREA -->
   <div>
     Description:
   </div>
   <div>
-    <textarea name="description" rows="10" cols="30"></textarea>
+    <textarea name="description" rows="10" cols="30" class="description-area"></textarea>
   </div>
 </div>
