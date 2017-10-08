@@ -1,17 +1,20 @@
-<h1>Register New User</h1>
-
-<%= form_tag '/users', method: :post do %>
-  <div>
-    Name: <input type="text" name="name">
+<div class="row">
+  <h1 class="col s12">Register New User</h1>
+  <%= form_tag '/users', method: :post do %>
+    <div class="signup-form">
+      <div>
+        Name: <input type="text" name="name">
+      </div>
+      <div>
+        Email: <input type="email" name="email">
+      </div>
+      <div>
+        Password: <input type="password" name="password">
+      </div>
+      <div>
+        Confirm Password: <input type="password" name="password_confirmation">
+      </div>
+      <input type="submit" class="btn" value="Add User">
+    <% end %>
   </div>
-  <div>
-    Email: <input type="email" name="email">
-  </div>
-  <div>
-    Password: <input type="password" name="password">
-  </div>
-  <div>
-    Confirm Password: <input type="password" name="password_confirmation">
-  </div>
-  <input type="submit" value="Add User">
-<% end %>
+</div>

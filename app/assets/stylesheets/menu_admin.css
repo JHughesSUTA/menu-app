@@ -153,6 +153,11 @@ h3 {
   text-align: right;
 }
 
+#card-menu {
+  text-align: center;
+  color: #4db6ac;
+}
+
 #add-item-button {
   margin-bottom: 30px;
 }
@@ -182,4 +187,12 @@ h3 {
   height: 75px;
   background-color: #4db6ac;
   opacity: 0.8;
+}
+
+/*SIGNUP FORM*/
+
+.signup-form {
+  color: white;
+  width: 75%;
+  margin: auto;
 }

@@ -1,6 +1,10 @@
 <!-- Sets default menu based on time of day or menu selected -->
 <div class="row">
-  <div class="col s9"> 
+  <% if current_user && @carted_items.length > 0 %>
+    <div class="col s9">
+  <% else %>
+    <div class="col s12">
+  <% end %> 
   <!-- HEADING -->
     <% if params[:lunch] == "true" %>
       <h1 class="menu menuHeading">LUNCH MENU</h1>
@@ -28,7 +32,7 @@
                   <% if current_user %>
                     <%= form_tag "/carted_items", method: :post do %>
                       <input type="hidden" name="item_id" value="<%= item.id %>">
-                      <div class="col s12 quantity-box">
+                      <div class="col s12 quantity-box">                             <!-- QUANTITY DROPDOWN -->
                         <select name="quantity" class="quantity-select">
                           <option value="1" selected>1</option>
                             <% for x in 2..10 %>
@@ -37,11 +41,6 @@
                           </select>
                         <label>Choose Quantity</label>
                       </div>
-
-                      <!-- <div class="quantity-box"> -->
-                        <!-- Quantity:  -->
-                        <!-- <input type="text" name="quantity"> -->
-                      <!-- </div> -->
                       <input class="btn" type="submit" value="Add to Order">
                     <% end %>
                   <% end %>
@@ -56,8 +55,8 @@
 
   </div>
   <!-- YOUR ORDER -->
-  <div class="col s3 order-panel">
-    <% if current_user && @carted_items.length > 0 %>
+  <% if current_user && @carted_items.length > 0 %>
+    <div class="col s3 order-panel">
       <div>
         <h5>Your Order</h5>
         <% @carted_items.each do |carted_item| %>
@@ -68,6 +67,7 @@
           <% end %>
         <% end %>
       </div>
+      <div class="divider"></div>
       <ul>
         <li>subtotal: <%= number_to_currency(@subtotal) %></li>
         <li>tax: <%= number_to_currency(@tax) %></li>
@@ -78,8 +78,8 @@
           <input class="btn" type="submit" value="Submit Order">
         <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
 </div>
 

@@ -1,6 +1,13 @@
 <h1>ALL ITEMS</h1>
 <% @items.each do |item| %>
   <h3><%= item.name %></h3>
+  <p><%= item.category.name %></p>
+  <% if item.lunch %>
+    <p>lunch item</p>
+  <% end %>
+  <% if item.dinner %>
+    <p>dinner item</p>
+  <% end %>
   <p><%= item.description %></p>
   <p><%= number_to_currency(item.price) %>
 <% end %>

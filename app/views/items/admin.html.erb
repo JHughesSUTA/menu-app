@@ -5,11 +5,9 @@
 <div class="row">
 
   <!-- CATEGORIES SECTION -->
-  <!-- <div class="col s12"> -->
     <div class="col s12">
       <h1 >CURRENT CATEGORIES</h1>
     </div>
-    <!-- </div> -->
     <div class=" col 12">
       <div class="col s6">
         <% @categories.each do |category| %>
@@ -34,8 +32,6 @@
         <% end %>
       </div>
     </div>
-    <!-- </div> -->
-  <!-- </div> -->
 
   <div class="divider col s12"></div>
 
@@ -50,10 +46,17 @@
       <h2 class="col s12" id="menu-category"><%= category.name.pluralize %></h2>
       <% @items.each do |item| %>
         <% if item.category.id == category.id %>
-          <div class="col s6 z-depth-5">
-            <div class="card grey darken-3">
+          <div class="col s6">
+            <div class="card grey darken-3 z-depth-5">
               <div class="card-content white-text">
                 <span class="card-title"><%= item.name %></span>
+                <% if item.lunch && item.dinner %>
+                  <p id="card-menu">Lunch and Dinner Menus</p>
+                <% elsif item.lunch %>
+                  <p id="card-menu">Lunch Menu</p>
+                <% elsif item.dinner %> 
+                  <p id="card-menu">Dinner Menu</p>
+                <% end %>
                 <p id="card-description"><%= item.description %></p>
                 <p id="card-price"><%= number_to_currency(item.price) %></p>
               </div>
