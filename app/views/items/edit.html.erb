@@ -5,7 +5,7 @@
   <%= form_tag "/items/#{@item.id}", method: :patch do %>
     <%= render "form", url: "/items/#{@item.id}" %>
     <div class="col s12">
-      <%= submit_tag "Update Item" %>
+      <input class="btn" type="submit" value="Confirm Edit">
     </div>
   <% end %>
   <a href="/admin" class="normal-link col s12">Cancel</a>

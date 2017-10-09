@@ -1,8 +1,7 @@
 <!-- ERROR DISPLAY MESSAGE -->
 <% if @item.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h3>
- 
+  <div id="error_explanation" class="col s12">
+    <!-- <h3><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h3> -->
     <ul>
     <% @item.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

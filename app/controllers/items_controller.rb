@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.sort_by {|item| item.id}
     render "index.html.erb"
   end
 
@@ -10,8 +10,7 @@ class ItemsController < ApplicationController
     render "new.html.erb"
   end
 
-  def create
-    
+  def create    
     @categories = Category.all 
     @item = Item.new(
       category_id: params["category_id"],
@@ -68,25 +67,25 @@ class ItemsController < ApplicationController
   def menu
     @carted_item =CartedItem.new
     # menu variables
-    @categories = Category.all
+    @categories = Category.all.sort_by {|category| category.id}
 
     # sets menu to dinner if past 4pm, otherwise set to lunch
     @time = Time.now
     if @time.hour >= 16
-      @items = Item.where(dinner:true)
+      @items = Item.where(dinner:true).sort_by {|item| item.id}
       @meal_time = "dinner"
     else
-      @items = Item.where(lunch:true)
+      @items = Item.where(lunch:true).sort_by {|item| item.id}
       @meal_time = "lunch"
     end
 
     # resets menu based on link clicked/params
     if params[:dinner] == "true"
-      @items = Item.where(dinner: true)
+      @items = Item.where(dinner: true).sort_by {|item| item.id}
       @meal_time = "dinner"
 
     elsif params[:lunch] == "true"
-      @items = Item.where(lunch:true)
+      @items = Item.where(lunch:true).sort_by {|item| item.id}
       @meal_time = "lunch"
 
     end
@@ -106,8 +105,8 @@ class ItemsController < ApplicationController
   end
 
   def admin
-    @items = Item.all
-    @categories = Category.all
+    @items = Item.all.sort_by {|item| item.id}
+    @categories = Category.all.sort_by {|category| category.id}
     if current_user.admin 
       render "admin.html.erb"
     else
