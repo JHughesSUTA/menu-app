@@ -74,15 +74,21 @@ class ItemsController < ApplicationController
     @time = Time.now
     if @time.hour >= 16
       @items = Item.where(dinner:true)
+      @meal_time = "dinner"
     else
       @items = Item.where(lunch:true)
+      @meal_time = "lunch"
     end
 
     # resets menu based on link clicked/params
     if params[:dinner] == "true"
       @items = Item.where(dinner: true)
+      @meal_time = "dinner"
+
     elsif params[:lunch] == "true"
       @items = Item.where(lunch:true)
+      @meal_time = "lunch"
+
     end
 
     # price calculation variables

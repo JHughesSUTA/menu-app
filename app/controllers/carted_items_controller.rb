@@ -29,7 +29,7 @@ class CartedItemsController < ApplicationController
     carted_item = CartedItem.find_by(id: params[:id])
     carted_item.status = "removed"
     carted_item.save
-    flash[:succes] = "#{carted_item.item.name} has been removed"
+    flash[:succes] = "'#{carted_item.item.name}' has been removed"
     redirect_to "/"
   end
 end

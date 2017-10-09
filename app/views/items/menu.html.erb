@@ -29,13 +29,13 @@
                   <h3 class="itemName"><%= item.name %></h3>
                   <p><%= item.description %></p>
                   <p><%= number_to_currency(item.price) %></p>
-                  <% if current_user %>
+                  <% if current_user && (@time.hour >= 16 && @meal_time == "dinner")  || (@time.hour < 16 && @meal_time == "lunch") %>
                     <%= form_tag "/carted_items", method: :post do %>
                       <input type="hidden" name="item_id" value="<%= item.id %>">
-                      <div class="col s12 quantity-box">                             <!-- QUANTITY DROPDOWN -->
+                      <div class="col s12 quantity-box">                       <!-- QUANTITY DROPDOWN -->
                         <select name="quantity" class="quantity-select">
-                          <option value="1" selected>1</option>
-                            <% for x in 2..10 %>
+                          <option value="" selected disabled>Quantity</option>
+                            <% for x in 1..10 %>
                               <option value="<%= x %>"><%= x %></option>
                             <% end %>
                           </select>
@@ -61,7 +61,7 @@
         <h5>Your Order</h5>
         <% @carted_items.each do |carted_item| %>
           <h5><%= carted_item.item.name %></h5>
-          <p>Quantity: <%= carted_item.quantity %> Price: <%= number_to_currency(carted_item.item.price * carted_item.quantity) %></p>
+          <p>Quantity: <%= carted_item.quantity %> - Price: <%= number_to_currency(carted_item.item.price * carted_item.quantity) %></p>
           <%= form_tag "/carted_items/#{carted_item.id}", method: :delete do %>
             <button class="btn-floating" type="submit"><i class="material-icons trash-icon">delete</i></button>
           <% end %>
