@@ -15,7 +15,9 @@
             <h5><%= category.name %></h5>
           </div>
           <div class="col s4">
-            <%= form_tag "/categories/#{category.id}", method: :delete do %>
+            <%= form_tag "/categories/#{category.id}",
+            data: { confirm: "WARNING:\nThis will also remove any items under this category!\nOkay to proceed?" },
+            method: :delete do %>
               <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
             <% end %>
           </div>

@@ -17,6 +17,8 @@ class CategoriesController < ApplicationController
   def destroy
     category_id = params[:id]
     category = Category.find_by(id: category_id)
+    category_items = category.items.where(category_id: category_id)
+    category_items.destroy_all
     category.destroy
     flash[:success] = "#{category.name} has been removed from the menu"
     redirect_to :back
