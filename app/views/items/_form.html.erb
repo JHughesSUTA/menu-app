@@ -1,6 +1,6 @@
 <!-- ERROR DISPLAY MESSAGE -->
 <% if @item.errors.any? %>
-  <div id="error_explanation" class="col s12">
+  <div id="error-explanation" class="col s12">
     <!-- <h3><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h3> -->
     <ul>
     <% @item.errors.full_messages.each do |msg| %>
@@ -19,9 +19,15 @@
   <!-- CATEGORY DROPDOWN -->
   <div class="input-field form-elements col s11">
     <select name="category_id">
-      <option value="" disabled selected>Category</option>
+      <% if @item.category == nil %>
+        <option value="" disabled selected>Category</option>
+      <% end %>
       <% @categories.each do |category| %>
-        <option value="<%= category.id.to_i %>"><%= category.name %></option>
+        <% if @item && @item.category && (@item.category == category.name) %>
+          <option value="<%= category.id.to_i %>" selected><%= category.name %></option>
+        <% else %>
+          <option value="<%= category.id.to_i %>"><%= category.name %></option>
+        <% end %>
       <% end %>
     </select>
     <label>Choose Item Category</label>
@@ -37,12 +43,20 @@
     <div>
       <p class="col s3">
         <input type="hidden"  name="lunch" value="false" />  <!-- sets lunch value to false if checkbox is unchecked -->
-        <input type="checkbox" name="lunch" class="filled-in" id="lunch-option" checked="checked" value="true" />
+        <% if @item && (@item.lunch == true) %>
+          <input type="checkbox" name="lunch" class="filled-in" id="lunch-option" checked="checked" value="true" />
+        <% else %>
+          <input type="checkbox" name="lunch" class="filled-in" id="lunch-option" value="true" />
+        <% end %>
         <label for="lunch-option">Lunch</label>
       </p>
       <p class="col s3">
         <input type="hidden"  name="dinner" value="false" /> <!-- sets dinner value to false if checkboxk is unchecked -->
-        <input type="checkbox" name="dinner" class="filled-in" id="dinner-option" checked="checked" value="true" />
+        <% if @item && (@item.dinner == true) %>
+          <input type="checkbox" name="dinner" class="filled-in" id="dinner-option" checked="checked" value="true" />
+        <% else %>
+          <input type="checkbox" name="dinner" class="filled-in" id="dinner-option" value="true" />
+        <% end %>
         <label for="dinner-option">Dinner</label>
       </p>
     </div>
@@ -61,6 +75,10 @@
     Description:
   </div>
   <div>
-    <textarea name="description" rows="10" cols="30" class="description-area"></textarea>
+    <% if @item.description != nil %>
+      <textarea name="description" rows="10" cols="30" class="description-area"><%= @item.description %></textarea>
+    <% else %>
+      <textarea name="description" rows="10" cols="30" class="description-area"></textarea>
+    <% end %>
   </div>
 </div>

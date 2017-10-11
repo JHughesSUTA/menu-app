@@ -126,7 +126,7 @@ h3 {
   font-size: 6rem;
 }
 
-#error_explanation {
+#error-explanation li {
   color: red;
 }
 
