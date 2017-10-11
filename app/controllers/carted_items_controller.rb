@@ -25,6 +25,18 @@ class CartedItemsController < ApplicationController
     end
   end
 
+  def edit
+    @carted_item = CartedItem.find_by(id: params[:id])
+    render "edit.html.erb"
+  end
+
+  def update
+    @carted_item = CartedItem.find_by(id: params[:id])
+    @carted_item.update(quantity: params[:quantity])
+    flash[:success] = "Quantity has been updated"
+    redirect_to "/menu"
+  end
+
   def destroy
     carted_item = CartedItem.find_by(id: params[:id])
     carted_item.status = "removed"

@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
 
     # price calculation variables
     if current_user # so page loads while not logged in
-      @carted_items = CartedItem.where(status: "carted", user_id: current_user.id)
+      @carted_items = CartedItem.where(status: "carted", user_id: current_user.id).sort_by { |carted_item| carted_item.id }
       @subtotal = 0
       @carted_items.each do |carted_item|
         @subtotal += carted_item.quantity * carted_item.item.price

@@ -60,19 +60,29 @@
       <div>
         <h5>Your Order</h5>
         <% @carted_items.each do |carted_item| %>
-          <h5><%= carted_item.item.name %></h5>
+          <h5 id="aqua-text"><%= carted_item.item.name %></h5>
           <p>Quantity: <%= carted_item.quantity %> - Price: <%= number_to_currency(carted_item.item.price * carted_item.quantity) %></p>
-          <%= form_tag "/carted_items/#{carted_item.id}", method: :delete do %>
-            <button class="btn-floating" type="submit"><i class="material-icons trash-icon">delete</i></button>
-          <% end %>
+          <div class="col s12 order-buttons">
+            <div class="col s3 offset-s3">
+              <%= form_tag "/carted_items/#{carted_item.id}", method: :delete do %>
+                <button class="btn-floating" type="submit"><i class="material-icons trash-icon">delete</i></button>
+              <% end %>
+            </div>
+            <div class="col s3">
+              <a href="/carted_items/<%= carted_item.id %>/edit" class="btn-floating"><i class="material-icons trash-icon">edit</i></a>
+            </div>
+          </div>
+          <div class="divider"></div>
         <% end %>
       </div>
+      <div>
       <div class="divider"></div>
-      <ul>
-        <li>subtotal: <%= number_to_currency(@subtotal) %></li>
-        <li>tax: <%= number_to_currency(@tax) %></li>
-        <li><strong>total:</strong> <%= number_to_currency(@total) %></li>
-      </ul>
+        <ul>
+          <li><strong id="aqua-text">subtotal:</strong> <%= number_to_currency(@subtotal) %></li>
+          <li><strong id="aqua-text">tax:</strong> <%= number_to_currency(@tax) %></li>
+          <li><strong id="aqua-text">total:</strong> <%= number_to_currency(@total) %></li>
+        </ul>
+      </div>
       <div>
         <%= form_tag "/orders", method: :post do %>
           <input class="btn" type="submit" value="Submit Order">

@@ -1,10 +1,11 @@
-<div>
+<div class="carted_items">
   <h3>Your Order</h3>
   <% @carted_items.each do |carted_item| %>
     <h4><%= carted_item.item.name %></h4>
     <h4>Quantity: <%= carted_item.quantity %></h4>
     <%= form_tag "/carted_items/#{carted_item.id}", method: :delete do %>
-      <input type="submit" value="delete">
+      <input type="submit" class="btn" value="delete">
     <% end %> 
   <% end %>
+  <div class="divider"></div>
 </div>
