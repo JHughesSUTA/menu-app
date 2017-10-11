@@ -1,39 +1,42 @@
-<% if current_user %>
-  <p>Hello, <%= current_user.name %></p>
-<% end %>
-
 <div class="row">
+  <% if current_user %>
+    <p class="col s6">Hello, <%= current_user.name %></p>
+  <% end %>
+  <div class="col s4 offset-s2">
+    <a href="/signup" class="waves-effect waves-light btn" id="register-user-button">Register New User</a>
+  </div>
+
 
   <!-- CATEGORIES SECTION -->
-    <div class="col s12">
-      <h1 >CURRENT CATEGORIES</h1>
+  <div class="col s12">
+    <h1 >CURRENT CATEGORIES</h1>
+  </div>
+  <div class=" col 12">
+    <div class="col s6">
+      <% @categories.each do |category| %>
+        <div class="col s8">
+          <h5><%= category.name %></h5>
+        </div>
+        <div class="col s4">
+          <%= form_tag "/categories/#{category.id}",
+          data: { confirm: "WARNING:\nThis will also remove any items under this category!\nOkay to proceed?" },
+          method: :delete do %>
+            <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
+          <% end %>
+        </div>
+      <% end %>
     </div>
-    <div class=" col 12">
-      <div class="col s6">
-        <% @categories.each do |category| %>
-          <div class="col s8">
-            <h5><%= category.name %></h5>
-          </div>
-          <div class="col s4">
-            <%= form_tag "/categories/#{category.id}",
-            data: { confirm: "WARNING:\nThis will also remove any items under this category!\nOkay to proceed?" },
-            method: :delete do %>
-              <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <div class="col s6 category-box">
-        <%= form_tag "/categories", method: :post do %>
-          <div class="col s8">
-            Add a New Category: <input type="text" name="category_name">
-          </div>
-          <div class="col s4 add-btn">
-            <button class="btn" type="submit">Add</button>
-          </div>
-        <% end %>
-      </div>
+    <div class="col s6 category-box">
+      <%= form_tag "/categories", method: :post do %>
+        <div class="col s8">
+          Add a New Category: <input type="text" name="category_name">
+        </div>
+        <div class="col s4 add-btn">
+          <button class="btn" type="submit">Add</button>
+        </div>
+      <% end %>
     </div>
+  </div>
 
   <div class="divider col s12"></div>
 

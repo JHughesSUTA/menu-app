@@ -28,7 +28,16 @@
           </div>
         </div>
       <% end %>
-      <input type="submit" class="btn" value="Add User">
-    <% end %>
-  </div>
+      <div class="col s3"> 
+        <input type="submit" class="btn" value="Add User">
+      </div>
+        <% end %>
+        <div>
+        <% if current_user && current_user.admin %>
+          <a href="/admin" class="normal-link">Cancel</a>
+        <% else %>
+          <a href="/" class="normal-link">Cancel</a>
+        <% end %> 
+      </div>
+    </div>
 </div>

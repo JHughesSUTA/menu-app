@@ -200,3 +200,10 @@ h3 {
 .admin-checkbox {
   margin-bottom: 50px;
 }
+
+
+/*ADMIN PAGE*/
+
+#register-user-button {
+  margin-top: 15px;
+}
