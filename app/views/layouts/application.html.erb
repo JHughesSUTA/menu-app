@@ -16,13 +16,13 @@
           <a href="/" class="brand-logo center">Restaurant Name</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if current_user && current_user.admin %>
-              <li><a href="/admin">Menu Editor</a></li>
+              <li><a href="/admin">Admin</a></li>
             <% end %> 
             <% if current_user %>
               <li><a href="/logout">Log Out</a></li>
             <% else %>
               <li><a href="signup">Sign Up</a></li>
-              <li><a href="/login">Log In</a></li>
+              <li><a href="/login">Login</a></li>
             <% end %> 
           </ul>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -35,7 +35,7 @@
 
     
     <div class="container">  <!-- puts all pages in a container -->
-      <%= render "layouts/alerts" %>
+      <%= render "layouts/alerts" %> <!-- uses materialize toasts for flash messages -->
       <%= yield %>
     </div>
   </body>

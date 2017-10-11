@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def new
-    render "new.html.erb"
+    if current_user && current_user.admin == false
+      flash[:warning] = "You are already signed up!"
+      redirect_to "/"
+    else
+      render "new.html.erb"
+    end
   end
 
   def create

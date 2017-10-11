@@ -5,6 +5,10 @@ html, body, h1, h2, h3, h4, p, div, ul, ol, li {
   font-size: 100%;
 }
 
+.container {
+  width: 85% !important;
+}
+
 body {
   background-image: url("/assets/background.png");
   background-attachment: fixed;
