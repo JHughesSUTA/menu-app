@@ -110,7 +110,7 @@ class ItemsController < ApplicationController
     if current_user.admin 
       render "admin.html.erb"
     else
-      flash[:success] = "You do not have access to the page"
+      flash[:warning] = "You do not have access to the page"
       redirect_to "/"
     end
   end

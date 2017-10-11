@@ -35,9 +35,7 @@
 
     
     <div class="container">  <!-- puts all pages in a container -->
-      <% flash.each do |name, message| %>   <!-- allows flash messages -->
-        <p class="flash"><%= message %></p>
-      <% end %>
+      <%= render "layouts/alerts" %>
       <%= yield %>
     </div>
   </body>
