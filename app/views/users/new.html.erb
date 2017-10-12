@@ -10,7 +10,12 @@
 <% end %>
 
 <div class="row">
-  <h1 class="col s12">Register New User</h1>
+  <% if current_user %>  <!-- sets different heading for admin view -->
+    <h1 class="col s12">Add a New User</h1>
+  <% else %>
+    <h1 class="col s12">Sign Up</h1>
+  <% end %>
+
   <%= form_tag '/users', method: :post do %>
     <div class="signup-form">
       <div>
@@ -19,12 +24,21 @@
       <div>
         Email: <input type="email" name="email">
       </div>
-      <div>
-        Password: <input type="password" name="password">
-      </div>
-      <div>
-        Confirm Password: <input type="password" name="password_confirmation">
-      </div>
+      <% if current_user %> <!-- sets different labels if in admin view -->
+        <div>
+          Temporary Password: <input type="password" name="password">
+        </div>
+        <div>
+          Confirm Temporary Password: <input type="password" name="password_confirmation">
+        </div>
+      <% else %>
+        <div>
+          Password: <input type="password" name="password">
+        </div>
+        <div>
+          Confirm Password: <input type="password" name="password_confirmation">
+        </div>
+      <% end %>
       <% if current_user && current_user.admin %> 
         <div class="admin-checkbox col s12">
           <div>

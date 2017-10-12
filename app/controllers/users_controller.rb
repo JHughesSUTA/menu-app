@@ -22,8 +22,6 @@ class UsersController < ApplicationController
       flash[:success] = "Successfully added user"
       redirect_to "/"
     else
-      # flash[:warning] = "Invalid email or password"
-      # redirect_to '/signup'
       render "new.html.erb"
     end
   end

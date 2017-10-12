@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
   def new
-    render "new.html.erb"
+    if !current_user
+      render "new.html.erb"
+    else
+      flash[:warning] = "You are already logged in"
+      redirect_to "/"
+    end
   end
 
   def create

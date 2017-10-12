@@ -41,7 +41,7 @@
                           </select>
                         <label>Choose Quantity</label>
                       </div>
-                      <input class="btn" type="submit" value="Add to Order">
+                      <input class="btn hoverable" type="submit" value="Add to Order">
                     <% end %>
                   <% end %>
                 </div>
@@ -65,11 +65,11 @@
           <div class="col s12 order-buttons">
             <div class="col s3 offset-s3">
               <%= form_tag "/carted_items/#{carted_item.id}", method: :delete do %>
-                <button class="btn-floating" type="submit"><i class="material-icons trash-icon">delete</i></button>
+                <button class="btn-floating hoverable" type="submit"><i class="material-icons trash-icon">delete</i></button>
               <% end %>
             </div>
             <div class="col s3">
-              <a href="/carted_items/<%= carted_item.id %>/edit" class="btn-floating"><i class="material-icons trash-icon">edit</i></a>
+              <a href="/carted_items/<%= carted_item.id %>/edit" class="btn-floating hoverable"><i class="material-icons trash-icon">edit</i></a>
             </div>
           </div>
           <div class="divider"></div>

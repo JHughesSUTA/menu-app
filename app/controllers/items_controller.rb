@@ -7,7 +7,12 @@ class ItemsController < ApplicationController
   def new
     @categories = Category.all
     @item = Item.new
-    render "new.html.erb"
+    if current_user && current_user.admin 
+      render "new.html.erb"
+    else
+      flash[:warning] = "You do not have access to the page"
+      redirect_to "/"
+    end
   end
 
   def create    
@@ -36,7 +41,12 @@ class ItemsController < ApplicationController
   def edit
     @categories = Category.all
     @item = Item.find_by(id: params[:id])
-    render "edit.html.erb"
+    if current_user && current_user.admin
+      render "edit.html.erb"
+    else
+      flash[:warning] = "You do not have access to the page"
+      redirect_to "/"
+    end
   end
 
   def update
@@ -107,7 +117,7 @@ class ItemsController < ApplicationController
   def admin
     @items = Item.all.sort_by {|item| item.id}
     @categories = Category.all.sort_by {|category| category.id}
-    if current_user.admin 
+    if current_user && current_user.admin 
       render "admin.html.erb"
     else
       flash[:warning] = "You do not have access to the page"

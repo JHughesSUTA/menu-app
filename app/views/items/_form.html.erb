@@ -23,7 +23,7 @@
         <option value="" disabled selected>Category</option>
       <% end %>
       <% @categories.each do |category| %>
-        <% if @item && @item.category && (@item.category == category.name) %>
+        <% if @item && @item.category && (@item.category.name == category.name) %>
           <option value="<%= category.id.to_i %>" selected><%= category.name %></option>
         <% else %>
           <option value="<%= category.id.to_i %>"><%= category.name %></option>

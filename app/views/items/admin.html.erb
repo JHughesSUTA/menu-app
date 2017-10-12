@@ -3,9 +3,8 @@
     <p class="col s6">Hello, <%= current_user.name %></p>
   <% end %>
   <div class="">
-    <a href="/signup" class="waves-effect waves-light btn col s2 offset-s4" id="register-user-button">Register New User</a>
+    <a href="/signup" class="waves-effect waves-light btn col s2 offset-s4 hoverable" id="register-user-button">Register New User</a>
   </div>
-
 
   <!-- CATEGORIES SECTION -->
   <div class="col s12">
@@ -21,7 +20,7 @@
           <%= form_tag "/categories/#{category.id}",
           data: { confirm: "WARNING:\nThis will also remove any items under this category!\nOkay to proceed?" },
           method: :delete do %>
-            <button class="btn-floating" type="submit" value="delete"><i class="material-icons">delete</i></button>
+            <button class="btn-floating hoverable" type="submit" value="delete"><i class="material-icons">delete</i></button>
           <% end %>
         </div>
       <% end %>
@@ -32,7 +31,7 @@
           Add a New Category: <input type="text" name="category_name">
         </div>
         <div class="col s4 add-btn">
-          <button class="btn" type="submit">Add</button>
+          <button class="btn hoverable" type="submit">Add</button>
         </div>
       <% end %>
     </div>
@@ -44,9 +43,8 @@
   <div class="col s12">
     <h1>CURRENT ITEMS</h1>
     <div class="col s12" id="add-item-button">
-      <a href="/items/new" class="waves-effect waves-light btn col s4 push-s4">Add New Item</a>
+      <a href="/items/new" class="waves-effect waves-light btn col s4 push-s4 hoverable">Add New Item</a>
     </div>
-
     <% @categories.each do |category| %>
       <h2 class="col s12" id="menu-category"><%= category.name.pluralize %></h2>
       <% @items.each do |item| %>
@@ -66,12 +64,12 @@
                 <p id="card-price"><%= number_to_currency(item.price) %></p>
               </div>
               <div class="card-action col s12">
-                <a href="/items/<%= item.id %>/edit" class="normal-link btn-floating" class="col s2">
+                <a href="/items/<%= item.id %>/edit" class="normal-link btn-floating hoverable" class="col s2">
                   <i class="material-icons">edit</i>
                 </a>
                 <div class="col s2">
                   <%= form_tag "/items/#{item.id}", method: :delete do %>
-                    <button class="btn-floating" type="submit" value="delete">
+                    <button class="btn-floating hoverable" type="submit" value="delete">
                       <i class="material-icons">delete</i>
                     </button>
                   <% end %>
