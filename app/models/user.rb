@@ -4,5 +4,6 @@ class User < ApplicationRecord
   has_many :orders
   has_many :carted_items
 
-  validates :name, :email, presence: true
+  validates :name, presence: true
+  validates :email, uniqueness: true, presence: true
 end
