@@ -1,11 +1,12 @@
 <!-- Sets default menu based on time of day or menu selected -->
 <div class="row">
   <% if current_user && @carted_items.length > 0 %>
-    <div class="col s9">
+    <div class="col s9">  <!-- resizes grid to show carted items if there are carted items -->
   <% else %>
     <div class="col s12">
   <% end %> 
   <!-- HEADING -->
+  <!-- <h2><%= @time %></h2> -->
     <% if params[:lunch] == "true" %>
       <h1 class="menu menuHeading">LUNCH MENU</h1>
     <% elsif params[:dinner] == "true" %>
@@ -29,10 +30,10 @@
                   <h3 class="itemName"><%= item.name %></h3>
                   <p><%= item.description %></p>
                   <p><%= number_to_currency(item.price) %></p>
-                  <% if current_user && (@time.hour >= 16 && @meal_time == "dinner")  || (@time.hour < 16 && @meal_time == "lunch") %>
+                  <% if current_user && ((@time.hour >= 16 && @meal_time == "dinner")  || (@time.hour < 16 && @meal_time == "lunch")) %>
                     <%= form_tag "/carted_items", method: :post do %>
                       <input type="hidden" name="item_id" value="<%= item.id %>">
-                      <div class="col s12 quantity-box">                       <!-- QUANTITY DROPDOWN -->
+                      <div class="col s12 quantity-box">                 <!-- QUANTITY DROPDOWN -->
                         <select name="quantity" class="quantity-select">
                           <option value="" selected disabled>Quantity</option>
                             <% for x in 1..10 %>
@@ -76,7 +77,7 @@
         <% end %>
       </div>
       <div>
-      <div class="divider"></div>
+      <div class="divider"></div>    <!-- carted items totals -->
         <ul>
           <li><strong id="aqua-text">subtotal:</strong> <%= number_to_currency(@subtotal) %></li>
           <li><strong id="aqua-text">tax:</strong> <%= number_to_currency(@tax) %></li>
@@ -93,19 +94,9 @@
 
 </div>
 
-
+<!-- js for materialize dropdown -->
 <script>
   $(document).ready(function() {
     $('select').material_select();
-  });
-</script>
-
-<!-- <script>
-   $(document).ready(function(){
-    $('.order-panel').pushpin({
-      top: 0,
-      // bottom: 1000,
-      offset: 0
-    });
   });
 </script>

@@ -1,7 +1,6 @@
 class CartedItemsController < ApplicationController
   def index
     @carted_items = current_user.carted_items.where(status: "carted")
-    # @carted_item = CartedItem.new
     if @carted_items.length > 0 
       render "index.html.erb"
     else 

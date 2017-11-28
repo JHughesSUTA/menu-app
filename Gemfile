@@ -39,6 +39,16 @@ gem 'materialize-sass'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'capybara'
+  gem 'pry'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
 end
 
 group :development do

@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
       order_id: order.id 
     )
 
-    order.order_totals
+    order.order_totals #model method to calculate totals
 
     redirect_to "/orders/#{order.id}"
   end

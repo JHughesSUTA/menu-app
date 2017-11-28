@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get "/orders/:id" => "orders#show"
 
   #NON-RESTFUL ROUTES
-  get "/" => "items#menu"
-  get "/menu" => "items#menu"
-  get "/admin" => "items#admin"
+  get "/" => "pages#menu"
+  get "/menu" => "pages#menu"
+  get "/admin" => "pages#admin"
 end

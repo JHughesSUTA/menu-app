@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
       id: params["id"],
       name: params["category_name"]
     )
-
+    
     if category.save
       flash[:success] = "#{category.name} has been added to categories"
       redirect_to :back

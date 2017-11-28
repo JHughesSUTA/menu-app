@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       admin: params[:admin]
     )
     if @user.save
-      session[:user_id] = user.id
+      session[:user_id] = current_user ? current_user.id : @user.id    #keeps admin logged in after adding a new user
       flash[:success] = "Successfully added user"
       redirect_to "/"
     else

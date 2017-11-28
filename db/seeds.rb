@@ -6,13 +6,116 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create(
+  name: "Admin",
+  email: "admin@email.com",
+  password: "password",
+  password_confirmation: "password",
+  admin: true)
 
-Item.create(name: "Pizza Rolls", description: "Delicious rolls of pizza ingredients", price: 3.99, category_id: 1 )
-Item.create(name: "Buffalo Cauliflower", description: "Beer battered and drenched in buffalo sauce", price: 7.99, category_id: 1)
-Item.create(name: "Jalapeno Poppers", description: "Jalapenos stuffed with cream cheese and wrapped in BACON...yummmmmm", price: 5.99, category_id: 1)
-Item.create(name: "Steak", description: "12oz strip steak cooked to your taste", price: 19.99, category_id: 2)
-Item.create(name: "Fish and Chips", description: "Cod with french fries", price: 11.00, category_id: 2)
-Item.create(name: "Pizza", description: "10 inch pizza, served with toppings of our choice. Usually ham and pineapple", price: 9.99, category_id: 2)
-Item.create(name: "Fried Icecream", description: "It's magic", price: 4.99, category_id: 3)
-Item.create(name: "Lobster", description: "Whole Maine Lobster served with melted butter and your choice of side", price: 29.99, category_id: 2)
-Item.create(name: "Cinnamon Roll", description: "drenched in icing", price: 4.99, category_id: 3)
+User.create(
+  name: "User",
+  email: "user@email.com",
+  password: "password",
+  password_confirmation: "password",
+  admin: false)
+
+Category.create(name: "Appetizer", id: 1)
+Category.create(name: "Main Course", id: 2)
+Category.create(name: "Dessert", id: 3)
+
+Item.create(
+  name: "Chicken Wings",
+  description: "Chicken wings with your choice of sauce.",
+  category_id: 1,
+  price: 8.99,
+  lunch: true,
+  dinner: true)
+
+Item.create(
+  name: "Jalapeno Poppers",
+  description: "Baked jalapenos filled with cream cheese and wrapped in BACON!",
+  category_id: 1,
+  price: 9.99,
+  lunch: false,
+  dinner: true)
+
+Item.create(
+  name: "Buffalo Cauliflower",
+  description: "Beer battered deep-fried cauliflower covered in buffalo sauce.",
+  category_id: 1,
+  price: 7.99,
+  lunch: true,
+  dinner: false)
+
+Item.create(
+  name: "Crab Dip",
+  description: "Cheesy crab dip served with pita bread.",
+  category_id: 1,
+  price: 6.99,
+  lunch: true,
+  dinner: true)
+
+Item.create(
+  name: "Pizza",
+  description: "A pizza with our choice of toppings. More than likely ham and pineapple. Sorry.",
+  category_id: 2,
+  price: 14,
+  lunch: true,
+  dinner: true)
+
+Item.create(
+  name: "Fish and Chips",
+  description: "Fresh out of the Chicago River, breaded and served with french fries.",
+  category_id: 2,
+  price: 12,
+  lunch: true,
+  dinner: true)
+
+Item.create(
+  name: "Chicken Strips",
+  description: "The default option for the pickiest of eaters. Served with fries.",
+  category_id: 2,
+  price: 8,
+  lunch: true,
+  dinner: false)
+
+Item.create(
+  name: "Steak",
+  description: "16oz steak served with onions and mushrooms",
+  category_id: 2,
+  price: 15.99,
+  lunch: false,
+  dinner: true)
+
+Item.create(
+  name: "Chocolate Cake",
+  description: "You can have your cake and eat it too",
+  category_id: 3,
+  price: 4.99,
+  lunch: false,
+  dinner: true)
+
+Item.create(
+  name: "Churros",
+  description: "Fried dough pastry with cinnamon and sugar",
+  category_id: 3,
+  price: 4.99,
+  lunch: true,
+  dinner: true)
+
+Item.create(
+  name: "Key Lime Pie",
+  description: "It's green, and it tastes good.",
+  category_id: 3,
+  price: 7.99,
+  lunch: true,
+  dinner: true)
+
+Item.create(
+  name: "Ice Cream",
+  description: "Choose from an assortment of flavors and toppings",
+  category_id: 3,
+  price: 3.99,
+  lunch: true,
+  dinner: false)

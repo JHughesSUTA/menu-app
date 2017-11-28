@@ -5,7 +5,6 @@
   <%= form_tag "/carted_items/#{@carted_item.id}", method: :patch do %>
     <div class="input-field form-elements col s4 offset-s4 form-component">
       <select name="quantity">
-        <!-- <option value="" disabled selected>Quantity</option> -->
         <% (1..10).each do |num| %>
           <% if @carted_item.quantity == num %>
             <option value="<%= num %>" selected><%= num %></option>
@@ -23,6 +22,7 @@
   <a href="/menu" class="normal-link col s12">Cancel</a>
 </div>
 
+<!-- js for materialize dropdown -->
 <script>
   $(document).ready(function() {
     $('select').material_select();

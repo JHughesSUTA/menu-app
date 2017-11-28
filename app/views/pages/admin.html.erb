@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div class="divider col s12"></div>
+  <div class="divider col s12"></div> <!-- divider -->
 
   <!-- ITEMS SECTION -->
   <div class="col s12">
@@ -45,10 +45,10 @@
     <div class="col s12" id="add-item-button">
       <a href="/items/new" class="waves-effect waves-light btn col s4 push-s4 hoverable">Add New Item</a>
     </div>
-    <% @categories.each do |category| %>
+    <% @categories.each do |category| %>  <!-- iterate through categories -->
       <h2 class="col s12" id="menu-category"><%= category.name.pluralize %></h2>
-      <% @items.each do |item| %>
-        <% if item.category.id == category.id %>
+      <% @items.each do |item| %> <!-- iterate through items within category -->
+        <% if item.category.id == category.id %>   <!-- only shows item if it is under the current category in loop -->
           <div class="col s6">
             <div class="card grey darken-3 z-depth-5">
               <div class="card-content white-text">
@@ -80,8 +80,6 @@
         <% end %>
       <% end %>
     <% end %>
-
-
   </div>
 
 </div>
