@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user, optional: true
-  belongs_to :item, optional: true
+  # belongs_to :item, optional: true  -- this should not be needed
   has_many :carted_items
   has_many :items, through: :carted_items
 
