@@ -10,12 +10,14 @@ html, body, h1, h2, h3, h4, p, div, ul, ol, li {
 }
 
 body {
+  background: rgb(108,108,108);
+  background: linear-gradient(100deg, rgba(108,108,108,1) 10%, rgba(0,0,0,1) 100%);
   /*background-image: url("/assets/background.png");*/
-  background-image: image-url("<%= asset_path('background.png') %>");
-  background-attachment: fixed;
+  /*background-image: image-url("<%= asset_path('background.png') %>");*/
+ /* background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: cover;
+  background-size: cover;*/
 }
 
 h1, h2, h3, h4, h5, h6, p, li {
